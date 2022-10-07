@@ -15,7 +15,7 @@ object Settings {
 
   /** Options for the scala compiler */
   val scalacOptions = Seq(
-    "-target:jvm-1.8",
+    // "-target:jvm-1.8",
     "-encoding", "UTF-8",
     "-unchecked",
     "-deprecation",
