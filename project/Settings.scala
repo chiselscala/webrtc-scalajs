@@ -29,9 +29,9 @@ object Settings {
 
   /** Declare global dependency versions here to avoid mismatches in multi part dependencies */
   object versions {
-    val scala = "2.11.8"
+    val scala = "2.12"
 
-    val scalaJsDom = "0.9.1"
+    val scalaJsDom = "2.3.0"
     val scalaJsJQuery = "0.9.1"
     val akkaVersion = "2.4.12"
     val scalaCss = "0.5.0"
@@ -40,12 +40,12 @@ object Settings {
     val scalaTags = "0.6.1"
     val scalaTestPlusPlay = "1.5.1"
 
-    val jQuery = "1.11.1"
+    val jQuery = "2.1.4"
     val bootstrap = "3.3.6"
 
-    val scalaJsScripts = "1.0.0"
-    val udash = "0.4.0"
-    val uPickle = "0.4.3"
+    val scalaJsScripts = "1.2.0"
+    val udash = "0.7.2"
+    val uPickle = "2.0.0"
     val fontAwesome = "4.7.0"
   }
 
@@ -54,8 +54,8 @@ object Settings {
     * the special %%% function selects the correct version for each project
     */
   val sharedDependencies = Def.setting(Seq(
-    "com.lihaoyi" %%% "upickle" % versions.uPickle,
-    "io.udash" %%% "udash-core-shared" % versions.udash
+    "com.lihaoyi" %% "upickle" % versions.uPickle,
+    "io.udash" %% "udash-core-shared" % versions.udash
   ))
 
   /** Dependencies only used by the JVM project */
@@ -72,17 +72,23 @@ object Settings {
 
   /** Dependencies only used by the JS project (note the use of %%% instead of %%) */
   val scalajsDependencies = Def.setting(Seq(
-    "io.udash" %%% "udash-core-frontend" % versions.udash,
-    "be.doeraene" %%% "scalajs-jquery" % versions.scalaJsJQuery,
-    "org.scala-js" %%% "scalajs-dom" % versions.scalaJsDom,
-    "com.lihaoyi" %%% "scalatags" % versions.scalaTags,
-    "com.lihaoyi" %%% "utest" % versions.uTest % Test
+    "io.udash" %% "udash-core-frontend" % versions.udash,
+    "be.doeraene" %% "scalajs-jquery" % versions.scalaJsJQuery,
+    "org.scala-js" %% "scalajs-dom" % versions.scalaJsDom,
+    "com.lihaoyi" %% "scalatags" % versions.scalaTags,
+    "com.lihaoyi" %% "utest" % versions.uTest % Test
   ))
 
   /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */
-  val jsDependencies = Def.setting(Seq(
-    "org.webjars" % "jquery" % versions.jQuery / "jquery.js" minified "jquery.min.js",
-    "org.webjars" % "bootstrap" % versions.bootstrap / "bootstrap.js" minified "bootstrap.min.js" dependsOn "jquery.js",
-    "org.webjars" % "log4javascript" % versions.log4js / "js/log4javascript_uncompressed.js" minified "js/log4javascript.js"
-  ))
+  // val jsDependencies = Def.setting(Seq(
+  //   "org.webjars" % "jquery" % "3.4.1" / "3.4.1/jquery.js" minified s"3.4.1/jquery.min.js",
+  //   // "org.webjars" % "jquery" % versions.jQuery + "/" + "jquery.js" minified "jquery.min.js",
+  //   "org.webjars" % "bootstrap" % versions.bootstrap / "bootstrap.js" minified "bootstrap.min.js" dependsOn "jquery.js",
+  //   "org.webjars" % "log4javascript" % versions.log4js / "js/log4javascript_uncompressed.js" minified "js/log4javascript.js"
+  // ))
+
+
 }
+// jsDependencies += "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
+
+  
